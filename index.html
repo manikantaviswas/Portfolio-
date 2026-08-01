@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manikantaviswas Batchu — Software Engineer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16273F;
+    --bg:#F6F4EF;
+    --panel:#FFFFFF;
+    --steel:#3E5C76;
+    --gold:#A9803F;
+    --ink:#2B2B2B;
+    --muted:#6B6F76;
+    --pass:#3F7859;
+    --line:#DED9CC;
+    --max:920px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  a{color:var(--steel); text-decoration:none;}
+  a:hover{color:var(--gold);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* HERO */
+  header.hero{
+    background:var(--navy);
+    color:#EDEFF3;
+    padding:64px 0 56px;
+    border-bottom:4px solid var(--gold);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#9FB1C9;
+    margin-bottom:14px;
+  }
+  h1.name{
+    font-family:'Source Serif 4',serif;
+    font-weight:600;
+    font-size:clamp(34px,5vw,52px);
+    line-height:1.08;
+    letter-spacing:-.01em;
+  }
+  .title{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:15px;
+    color:#C9D2DE;
+    margin-top:10px;
+    letter-spacing:.02em;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 18px;
+    margin-top:22px;
+    font-size:14px;
+  }
+  .contact-row a, .contact-row span{color:#D8DEE8;}
+  .contact-row a:hover{color:#fff;}
+  .dot{color:#5B6C82;}
+
+  /* TEST REPORT CARD - signature element */
+  .report{
+    margin-top:36px;
+    background:#0F1D30;
+    border:1px solid #2A3D57;
+    border-radius:6px;
+    overflow:hidden;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .report-bar{
+    background:#0A1524;
+    padding:9px 16px;
+    font-size:12px;
+    color:#7C8CA3;
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #2A3D57;
+  }
+  .report-body{padding:18px 20px 20px;}
+  .report-line{
+    font-size:13.5px;
+    color:#C9D2DE;
+    margin-bottom:9px;
+    display:flex;
+    gap:10px;
+  }
+  .report-line .check{color:var(--pass); flex-shrink:0;}
+  .report-status{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed #2A3D57;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
+    font-size:12.5px;
+    color:#8FA3BC;
+  }
+  .report-status .pass{
+    color:var(--pass);
+    font-weight:600;
+    background:rgba(63,120,89,.15);
+    padding:2px 8px;
+    border-radius:3px;
+  }
+
+  /* SECTIONS */
+  section{padding:52px 0;}
+  section + section{border-top:1px solid var(--line);}
+  h2.section-title{
+    font-family:'Source Serif 4',serif;
+    font-size:26px;
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:block;
+  }
+  .section-intro{color:var(--muted); font-size:14.5px; margin-bottom:28px; max-width:60ch;}
+
+  /* EXPERIENCE */
+  .job-head{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:6px 20px;
+    margin-bottom:6px;
+  }
+  .job-role{font-weight:700; font-size:17px; color:var(--navy);}
+  .job-org{color:var(--steel); font-weight:500;}
+  .job-meta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+  ul.assertions{list-style:none; margin-top:14px;}
+  ul.assertions li{
+    position:relative;
+    padding-left:26px;
+    margin-bottom:10px;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  ul.assertions li::before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    color:var(--pass);
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+  }
+  .kudos{
+    margin-top:16px;
+    padding:12px 16px;
+    background:#FBF6EA;
+    border-left:3px solid var(--gold);
+    font-size:13.5px;
+    color:#5A4A2A;
+    border-radius:2px;
+  }
+
+  /* PROJECTS */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:680px){.projects-grid{grid-template-columns:1fr;}}
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px;
+  }
+  .project-card h3{
+    font-family:'Source Serif 4',serif;
+    font-size:19px;
+    color:var(--navy);
+    margin-bottom:10px;
+  }
+  .project-card ul{list-style:none;}
+  .project-card ul li{
+    font-size:13.8px;
+    color:var(--ink);
+    margin-bottom:8px;
+    padding-left:16px;
+    position:relative;
+  }
+  .project-card ul li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--gold);
+  }
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px 32px;}
+  @media (max-width:680px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-group h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-size:13px;
+    padding:5px 11px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    color:var(--navy);
+  }
+
+  /* EDUCATION */
+  .edu-item{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:4px 20px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .edu-item:last-child{border-bottom:none;}
+  .edu-name{font-weight:600; color:var(--navy); font-size:15px;}
+  .edu-sub{color:var(--muted); font-size:13.5px; margin-top:2px;}
+  .edu-meta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--muted);
+    text-align:right;
+  }
+
+  /* ACHIEVEMENTS */
+  ul.achieve{list-style:none;}
+  ul.achieve li{
+    position:relative;
+    padding-left:24px;
+    margin-bottom:12px;
+    font-size:14.5px;
+  }
+  ul.achieve li::before{
+    content:"★";
+    position:absolute;
+    left:0;
+    color:var(--gold);
+    font-size:12px;
+    top:4px;
+  }
+
+  footer{
+    background:var(--navy);
+    color:#B9C3D2;
+    padding:34px 0;
+    text-align:center;
+    font-size:13.5px;
+  }
+  footer a{color:#D8DEE8;}
+  footer a:hover{color:#fff;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Software Engineer · SDE &amp; SDET</div>
+    <h1 class="name">Manikantaviswas Batchu</h1>
+    <div class="title">Full-Stack Development &amp; Test Automation — Java · React · Playwright · REST</div>
+
+    <div class="contact-row">
+      <a href="mailto:batchumanikantaviswas@gmail.com">batchumanikantaviswas@gmail.com</a>
+      <span class="dot">•</span>
+      <span>6304258611</span>
+      <span class="dot">•</span>
+      <a href="https://www.linkedin.com/in/batchu-manikantaviswas-8462152a1" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="dot">•</span>
+      <a href="https://github.com/manikantaviswas" target="_blank" rel="noopener">GitHub</a>
+      <span class="dot">•</span>
+      <a href="https://leetcode.com/u/mani4036/" target="_blank" rel="noopener">LeetCode</a>
+    </div>
+
+    <div class="report">
+      <div class="report-bar">
+        <span>career-suite.test.js</span>
+        <span>run: 1 / 1</span>
+      </div>
+      <div class="report-body">
+        <div class="report-line"><span class="check">✓</span><span>Built and shipped full-stack applications end-to-end — Flask/React/Node backends, NLP pipelines, responsive UIs</span></div>
+        <div class="report-line"><span class="check">✓</span><span>200+ API &amp; UI test cases automated, cutting manual test effort and lifting regression coverage</span></div>
+        <div class="report-line"><span class="check">✓</span><span>Reusable automation frameworks — utility classes, payload builders, validation methods</span></div>
+        <div class="report-line"><span class="check">✓</span><span>REST API design &amp; testing — request/response payloads, business logic, end-to-end workflows</span></div>
+        <div class="report-line"><span class="check">✓</span><span>Kudos Award — caught critical P1 defects in a MasterCard PIN-setting workflow pre-production</span></div>
+        <div class="report-status">
+          <span class="pass">SUITE PASSED</span>
+          <span>0 failed</span>
+          <span>CGPA 8.63</span>
+          <span>NPTEL Java — Elite + Silver</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="section-num">01 — Experience</span>
+    <h2 class="section-title">Professional Experience</h2>
+
+    <div class="job-head">
+      <div>
+        <span class="job-role">Graduate Intern — SDET</span> · <span class="job-org">Zeta</span>
+      </div>
+      <div class="job-meta">Jan 2026 – Jun 2026 · Hyderabad, India</div>
+    </div>
+
+    <ul class="assertions">
+      <li>Automated 200+ API and UI test cases using Java and Playwright, significantly improving regression test coverage and reducing manual testing effort.</li>
+      <li>Developed and maintained reusable automation frameworks, utility classes, payload builders, and validation methods to improve code reusability and maintainability.</li>
+      <li>Performed comprehensive REST API testing by validating request/response payloads, business logic, and end-to-end workflows.</li>
+      <li>Collaborated closely with developers, product managers, and QA teams in an Agile environment to analyze requirements, report defects, and verify fixes.</li>
+      <li>Validated backend data and API responses to ensure data integrity, consistency, and compliance with business requirements.</li>
+    </ul>
+
+    <div class="kudos">
+      <strong>Kudos Award</strong> — recognized by management for identifying critical P1 defects in the MasterCard user PIN-setting workflow, preventing a high-impact production issue.
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <span class="section-num">02 — Projects</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Legal Assist</h3>
+        <ul>
+          <li>AI-powered FIR Assistant built with Flask, HTML, CSS, JavaScript, and Scikit-learn for NLP-based complaint analysis.</li>
+          <li>TF-IDF vectorization and keyword extraction to predict relevant IPC sections from free-text complaints.</li>
+          <li>Interactive UI surfacing the top IPC section with details, plus a structured list of remaining predictions.</li>
+          <li>Complaint summarization and draft FIR generation to organize case data for officers.</li>
+        </ul>
+      </div>
+      <div class="project-card">
+        <h3>Student Hub</h3>
+        <ul>
+          <li>Web application for college students to access profiles, project collaborations, learning resources, internships, and alumni networks.</li>
+          <li>Backend built with MongoDB and Express.js; dynamic, responsive frontend with React.js.</li>
+          <li>Secure authentication and structured data relationships for personalized content and efficient collaboration.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <span class="section-num">03 — Skills</span>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h4>Programming Languages</h4>
+        <div class="tag-row">
+          <span class="tag">Java</span>
+          <span class="tag">C++</span>
+          <span class="tag">C</span>
+          <span class="tag">Python</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Web Development</h4>
+        <div class="tag-row">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Automation Testing</h4>
+        <div class="tag-row">
+          <span class="tag">Playwright</span>
+          <span class="tag">UI Automation</span>
+          <span class="tag">API Automation</span>
+          <span class="tag">Cucumber BDD</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Database</h4>
+        <div class="tag-row">
+          <span class="tag">MySQL</span>
+          <span class="tag">SQL</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools</h4>
+        <div class="tag-row">
+          <span class="tag">Git</span>
+          <span class="tag">Postman</span>
+          <span class="tag">Maven</span>
+          <span class="tag">Jupyter</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Coursework</h4>
+        <div class="tag-row">
+          <span class="tag">DSA</span>
+          <span class="tag">OOPs</span>
+          <span class="tag">Operating Systems</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">System Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <span class="section-num">04 — Education</span>
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-name">BE, Information Technology — Vasavi College of Engineering</div>
+        <div class="edu-sub">CGPA 8.63</div>
+      </div>
+      <div class="edu-meta">10/2022 – 05/2026</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-name">Intermediate (MPC) — Bashyam Titanic Campus</div>
+        <div class="edu-sub">97%</div>
+      </div>
+      <div class="edu-meta">10/2020 – 06/2022</div>
+    </div>
+  </div>
+</section>
+
+<section id="achievements">
+  <div class="wrap">
+    <span class="section-num">05 — Achievements</span>
+    <h2 class="section-title">Achievements &amp; Certifications</h2>
+    <ul class="achieve">
+      <li>Finalist, National-Level Hackathon "Tech Savishkaar" — organized by Vasavi College of Engineering.</li>
+      <li>Elite + Silver Medal, NPTEL course — Programming in Java.</li>
+      <li>Certification — Databases for Developers.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Manikantaviswas Batchu — SDET</div>
+    <div style="margin-top:8px;">
+      <a href="mailto:batchumanikantaviswas@gmail.com">Email</a> ·
+      <a href="https://www.linkedin.com/in/batchu-manikantaviswas-8462152a1" target="_blank" rel="noopener">LinkedIn</a> ·
+      <a href="https://github.com/manikantaviswas" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://leetcode.com/u/mani4036/" target="_blank" rel="noopener">LeetCode</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
